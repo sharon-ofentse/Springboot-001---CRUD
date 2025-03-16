@@ -1,0 +1,17 @@
+# not necessary for current project, but is useful at a later stage so inserting the habit early
+networks:
+  app_crud_network:
+    driver: bridge
+
+services:
+  app-crud:
+    container_name: app_crud
+    build:
+      context: ./CRUDApplication
+      dockerfile: Dockerfile
+    image: app-crud-image
+    ports:
+      - "8080:8080"
+    networks:
+      - app_crud_network
+    restart: unless-stopped
